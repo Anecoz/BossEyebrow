@@ -1,0 +1,3 @@
+add_library(glew STATIC IMPORTED GLOBAL)
+set_target_properties(glew PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/lib/glew32s.lib)
+set_target_properties(glew PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/include)
