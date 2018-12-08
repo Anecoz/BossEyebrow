@@ -1,3 +1,5 @@
+#include "network/NetworkManager.h"
+
 #include <asio.hpp>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -16,6 +18,9 @@ int main()
   }
 
   glfwMakeContextCurrent(window);
+
+  // TESTING
+  boss::network::NetworkManager netManager;
 
   while (!glfwWindowShouldClose(window)) {
     glClear(GL_COLOR_BUFFER_BIT);
