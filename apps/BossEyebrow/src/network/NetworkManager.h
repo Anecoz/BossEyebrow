@@ -16,8 +16,8 @@ public:
   ~NetworkManager();
 
 private:
-  //asio::ip::tcp::resolver _resolver;
-  //asio::io_service _ioService;
+  asio::io_service _ioService;
+  asio::ip::tcp::resolver _resolver;
 
   std::shared_ptr<common::TCPConnection> _connection;
 };
