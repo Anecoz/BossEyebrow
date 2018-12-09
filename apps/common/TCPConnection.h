@@ -30,7 +30,7 @@ private:
   void readAsync();
   void handleReadHeader(const asio::error_code& error);
 
-  void handleWrite(const asio::error_code& error, std::size_t bytesTransferred);
+  void handleWrite(const char* rawData, std::size_t rawDataSize, const asio::error_code& error, std::size_t bytesTransferred);
 
   asio::streambuf _readBuf;
   asio::ip::tcp::socket _socket;

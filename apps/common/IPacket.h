@@ -1,17 +1,21 @@
 #pragma once
 
+#include "PacketHeader.h"
+
 #include <cstddef>
+
+#include <memory>
 
 namespace boss {
 namespace common {
 
-// TODO: Headers so that packets can be distinguished from one another
-// TODO: Some way to construct a correct packet using raw data (on receiver side), probably reading header 
 class IPacket
 {
 public:
+  //virtual std::unique_ptr<IPacket> constructFromRawData(const char* data, std::size_t size) = 0;
   virtual const char* getRawData() = 0;
   virtual std::size_t getDataSize() = 0;
+  virtual PacketHeader createHeader() = 0;
 };
 
 }
