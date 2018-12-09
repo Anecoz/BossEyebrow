@@ -1,6 +1,7 @@
 #include "TCPConnection.h"
 
 #include "HelloPacket.h"
+#include "DataPacket.h"
 #include "PacketHeader.h"
 #include "PacketFactory.h"
 
@@ -95,6 +96,9 @@ void TCPConnection::handleReadHeader(const asio::error_code& error)
 
     if (auto helloPacket = dynamic_cast<HelloPacket*>(packet.get())) {
       std::cout << "Received a hello packet, message is: " << helloPacket->message() << std::endl;
+    }
+    else if (auto dataPacket = dynamic_cast<DataPacket*>(packet.get())) {
+      std::cout << "Received a data packet, data is: " << std::to_string(dataPacket->data()) << std::endl;
     }
 
     delete[] packetBuffer;

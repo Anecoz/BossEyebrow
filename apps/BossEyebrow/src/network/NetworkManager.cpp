@@ -1,6 +1,7 @@
 #include "NetworkManager.h"
 
 #include "HelloPacket.h"
+#include "DataPacket.h"
 
 #include <iostream>
 
@@ -32,6 +33,14 @@ NetworkManager::NetworkManager()
     {
       std::cout << "Attempt to send another HelloPacket with message 'OMEGALUL'" << std::endl;
       auto packet = std::make_shared<common::HelloPacket>("OMEGALUL");
+      auto header = packet->createHeader();
+      std::cout << "Packet now going to write, header size is: " << std::to_string(header.headerByteSize()) << ", packet size is: " << std::to_string(header.getSizeOfPacket()) << std::endl;
+      _connection->writeAsync(packet);
+    }
+
+    {
+      std::cout << "Sending a data packet instead, data is 42" << std::endl;
+      auto packet = std::make_shared<common::DataPacket>(42);
       auto header = packet->createHeader();
       std::cout << "Packet now going to write, header size is: " << std::to_string(header.headerByteSize()) << ", packet size is: " << std::to_string(header.getSizeOfPacket()) << std::endl;
       _connection->writeAsync(packet);

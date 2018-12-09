@@ -1,6 +1,7 @@
 #include "PacketFactory.h"
 
 #include "HelloPacket.h"
+#include "DataPacket.h"
 
 namespace boss {
 namespace common {
@@ -10,6 +11,8 @@ std::unique_ptr<IPacket> PacketFactory::createFromRawData(const PacketHeader& he
   switch (header.getTypeOfPacket()) {
   case PacketType::HelloPacket:
     return std::unique_ptr<IPacket>(new HelloPacket(reinterpret_cast<char*>(rawData.get()), rawSize));
+  case PacketType::DataPacket:
+    return std::unique_ptr<IPacket>(new DataPacket(reinterpret_cast<char*>(rawData.get()), rawSize));
   }
 
   return nullptr;
