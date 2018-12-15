@@ -14,7 +14,7 @@ NetworkManager::NetworkManager()
   , _connection(common::TCPConnection::create(_ioService))
 {
   try {
-    std::cout << "Attempt to connect to server...";
+    std::cout << "Attempt to connect to server... ";
 
     asio::ip::tcp::resolver::query query("localhost", "49153");
     asio::ip::tcp::resolver::iterator endpointIterator = _resolver.resolve(query);

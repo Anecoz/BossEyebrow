@@ -17,7 +17,7 @@ enum class PacketType : std::uint8_t
 class PacketHeader
 {
 public:
-  static std::size_t headerByteSize() { return sizeof(PacketType) + 1; } // TODO: Verify that this works!
+  static std::size_t headerByteSize() { return sizeof(PacketType) + 1; }
 
   PacketHeader() = delete;
 

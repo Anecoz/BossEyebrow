@@ -1,6 +1,8 @@
 #include "network/NetworkManager.h"
+#include "input/KeyInput.h"
+#include "input/MouseButtonInput.h"
+#include "input/MousePosInput.h"
 
-#include <asio.hpp>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -18,6 +20,11 @@ int main()
   }
 
   glfwMakeContextCurrent(window);
+  glfwSwapInterval(1);
+
+  glfwSetKeyCallback(window, boss::input::KeyInput::invoke);
+	glfwSetCursorPosCallback(window, boss::input::MousePosInput::invoke);
+	glfwSetMouseButtonCallback(window, boss::input::MouseButtonInput::invoke);
 
   // TESTING
   boss::network::NetworkManager netManager;

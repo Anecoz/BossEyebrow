@@ -10,7 +10,8 @@ file(GLOB_RECURSE src
 add_executable(BossEyebrow ${src})
 target_include_directories(BossEyebrow PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../common)
 target_link_libraries(BossEyebrow 
-asio 
+asio
+glm
 glew 
 glfw
 ${OPENGL_LIBRARY})
