@@ -13,6 +13,7 @@ class GraphicsUtils {
 public:
 	static Texture loadPNGToTexture(const std::string& fileName);
 };
+
 }
 }
 

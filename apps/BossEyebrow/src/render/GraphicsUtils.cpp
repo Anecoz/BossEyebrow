@@ -20,7 +20,7 @@ Texture GraphicsUtils::loadPNGToTexture(const std::string& fileName)
     std::cerr << "File was : " << fileName << std::endl;
 		return Texture();
 	}
-  return Texture(std::move(image), width, height);  
+  return Texture(std::move(image), width, height);
 }
 
 }
