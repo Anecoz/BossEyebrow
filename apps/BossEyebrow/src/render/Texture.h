@@ -20,6 +20,8 @@ public:
 	//void updateData(float* newData);
 
 	GLuint getId() { return _texId; }
+	int getWidth() { return _width; }
+	int getHeight() { return _height; }
 
 private:
 	GLuint _texId;

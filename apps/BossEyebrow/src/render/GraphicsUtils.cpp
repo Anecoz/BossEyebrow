@@ -10,7 +10,6 @@ namespace render {
 
 Texture GraphicsUtils::loadPNGToTexture(const std::string& fileName)
 {
-	GLuint texId;
 	unsigned width, height;
 	std::vector<unsigned char> image;
 	unsigned error = lodepng::decode(image, width, height, fileName);

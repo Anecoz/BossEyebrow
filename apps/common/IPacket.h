@@ -12,6 +12,7 @@ namespace common {
 class IPacket
 {
 public:
+  virtual ~IPacket() {}
   //virtual std::unique_ptr<IPacket> constructFromRawData(const char* data, std::size_t size) = 0;
   virtual const char* getRawData() = 0;
   virtual std::size_t getDataSize() = 0;
