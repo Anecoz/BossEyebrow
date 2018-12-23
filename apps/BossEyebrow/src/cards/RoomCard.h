@@ -1,5 +1,9 @@
 #pragma once
 
+#include "../render/GraphicsUtils.h"
+
+#include <glm/glm.hpp>
+
 #include <unordered_map>
 
 namespace boss {
@@ -32,6 +36,10 @@ protected:
   unsigned _damage; // needs to be modifiable by effects
   std::unordered_map<TreasureType, unsigned> _treasureValues;
   bool _destroyable;
+
+  glm::vec3 _position;
+
+  boss::render::Texture _texture;
 
   // What properties can a room card have? 
   // - on build

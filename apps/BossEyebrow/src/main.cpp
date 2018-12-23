@@ -2,6 +2,7 @@
 #include "input/KeyInput.h"
 #include "input/MouseButtonInput.h"
 #include "input/MousePosInput.h"
+#include "cards/RoomCard.h"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -28,6 +29,8 @@ int main()
 
   // TESTING
   boss::network::NetworkManager netManager;
+
+  boss::cards::RoomCard testCard;
 
   while (!glfwWindowShouldClose(window)) {
     glClear(GL_COLOR_BUFFER_BIT);

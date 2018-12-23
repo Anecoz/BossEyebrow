@@ -25,7 +25,8 @@ Texture::Texture(std::vector<unsigned char>&& data, int width, int height)
 
 Texture::~Texture()
 {
-	glDeleteTextures(1, &_texId);
+	// TODO!
+	//glDeleteTextures(1, &_texId);
 }
 
 inline void Texture::bind()
