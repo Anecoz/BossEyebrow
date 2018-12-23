@@ -6,7 +6,7 @@ namespace boss {
 namespace render {
 
 Camera::Camera() 
-  : _projection(glm::ortho(0.0, 100.0, 0.0, 100.0, 0.0, 100.0))
+  : _projection(glm::ortho(0.0, 100.0, 0.0, 100.0, -1.0, 100.0))
 {}
 
 }

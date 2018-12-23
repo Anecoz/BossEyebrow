@@ -11,7 +11,7 @@ public:
   Camera();
   ~Camera() = default;
 
-const glm::mat4& projection() { return _projection; }
+const glm::mat4& projection() const { return _projection; }
 
 private:
   glm::mat4 _projection;

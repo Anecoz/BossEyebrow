@@ -14,7 +14,7 @@ Texture::Texture(std::vector<unsigned char>&& data, int width, int height)
 	, _height(height)
 {
 	glGenTextures(1, &_texId);
-	bind();
+	bind(0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
@@ -29,12 +29,13 @@ Texture::~Texture()
 	//glDeleteTextures(1, &_texId);
 }
 
-inline void Texture::bind()
+void Texture::bind(unsigned unit)
 {
+	glActiveTexture(GL_TEXTURE0 + unit);
 	glBindTexture(GL_TEXTURE_2D, _texId);
 }
 
-inline void Texture::unbind()
+void Texture::unbind()
 {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }

@@ -1,14 +1,14 @@
 #pragma once
 
-#include <GL\glew.h>
-#include <GLFW\glfw3.h>
-#include <glm\glm.hpp>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 #include <vector>
 
 typedef std::vector<glm::vec3> VertVec;
 typedef std::vector<unsigned> IndVec;
-typedef std::vector<glm::vec3> NormalVec;
+typedef std::vector<glm::vec2> UvVec;
 
 namespace boss {
 namespace render {
@@ -16,7 +16,7 @@ namespace render {
 class VertexArrayObject
 {
 public:
-	VertexArrayObject(const VertVec& verts, const IndVec& indices, const NormalVec& normals);
+	VertexArrayObject(const VertVec& verts, const IndVec& indices, const UvVec& uvs);
 	~VertexArrayObject();
 
 	void bind();
@@ -25,7 +25,7 @@ public:
 
 private:
 	GLuint _vao;
-	GLuint _vbo, _ibo, _nbo;
+	GLuint _vbo, _ibo, _tbo;
 
 	GLuint _count;
 };

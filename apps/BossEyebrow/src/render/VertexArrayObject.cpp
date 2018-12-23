@@ -3,12 +3,12 @@
 namespace boss {
 namespace render {
 
-VertexArrayObject::VertexArrayObject(const VertVec& verts, const IndVec& indices, const NormalVec& normals) {
+VertexArrayObject::VertexArrayObject(const VertVec& verts, const IndVec& indices, const UvVec& uvs) {
 	_count = static_cast<GLuint>(indices.size());
 	glGenVertexArrays(1, &_vao);
 	glGenBuffers(1, &_vbo);
 	glGenBuffers(1, &_ibo);
-	glGenBuffers(1, &_nbo);
+	glGenBuffers(1, &_tbo);
 
 	bind();
 
@@ -17,9 +17,9 @@ VertexArrayObject::VertexArrayObject(const VertVec& verts, const IndVec& indices
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, _nbo);
-	glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, _tbo);
+	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(1);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
@@ -33,7 +33,7 @@ VertexArrayObject::VertexArrayObject(const VertVec& verts, const IndVec& indices
 VertexArrayObject::~VertexArrayObject() {
 	glDeleteBuffers(1, &_vbo);
 	glDeleteBuffers(1, &_ibo);
-	glDeleteBuffers(1, &_nbo);
+	glDeleteBuffers(1, &_tbo);
 	glDeleteVertexArrays(1, &_vao);
 }
 

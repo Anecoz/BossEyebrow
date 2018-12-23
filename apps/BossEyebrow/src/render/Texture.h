@@ -14,7 +14,7 @@ public:
 	Texture(std::vector<unsigned char>&& data, int width, int height);
 	~Texture();
 
-	void bind();
+	void bind(unsigned unit);
 	void unbind();
 
 	//void updateData(float* newData);

@@ -1,10 +1,14 @@
 #pragma once
 
 #include "../render/GraphicsUtils.h"
+#include "../render/Shader.h"
+#include "../render/Camera.h"
+#include "../render/VertexArrayObject.h"
 
 #include <glm/glm.hpp>
 
 #include <unordered_map>
+#include <memory>
 
 namespace boss {
 namespace cards {
@@ -27,6 +31,8 @@ public:
   unsigned damage() { return _damage; }
   bool destroyable() { return _destroyable; }
 
+  void render(const boss::render::Camera& camera);
+
   //virtual void onHeroEnter(const Hero& hero) {}
   //virtual void onHeroDeath(const Hero& hero) {}
   //virtual void onBuilt(Decks and a command buffer?) {}
@@ -39,7 +45,9 @@ protected:
 
   glm::vec3 _position;
 
-  boss::render::Texture _texture;
+  std::unique_ptr<boss::render::VertexArrayObject> _vao;
+  std::unique_ptr<boss::render::Texture> _texture;
+  boss::render::Shader _shader;
 
   // What properties can a room card have? 
   // - on build
