@@ -5,12 +5,7 @@
 #include "cards/RoomCard.h"
 #include "render/Camera.h"
 
-#ifndef __APPLE__
-#include <GL/glew.h>
-#else
-#include <OpenGL/GL3.h>
-#endif
-#include <GLFW/glfw3.h>
+#include "Gl.h"
 #include <iostream>
 
 int main()
