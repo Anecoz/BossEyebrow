@@ -9,9 +9,17 @@ file(GLOB_RECURSE src
 
 add_executable(BossEyebrow ${src})
 target_include_directories(BossEyebrow PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../common)
-target_link_libraries(BossEyebrow 
-asio
-glm
-glew 
-glfw
-${OPENGL_LIBRARY})
+if (NOT APPLE)
+    target_link_libraries(BossEyebrow 
+        asio
+        glm
+        glew 
+        glfw
+        ${OPENGL_LIBRARY})
+else ()
+    target_link_libraries(BossEyebrow 
+        asio
+        glm
+        glfw
+        ${OPENGL_LIBRARY})
+endif()

@@ -1,6 +1,10 @@
 #pragma once
 
+#ifndef __APPLE__
 #include <GL/glew.h>
+#else
+#include <OpenGL/GL3.h>
+#endif
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 

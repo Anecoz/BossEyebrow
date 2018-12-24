@@ -5,8 +5,13 @@
 #include "cards/RoomCard.h"
 #include "render/Camera.h"
 
+#ifndef __APPLE__
 #include <GL/glew.h>
+#else
+#include <OpenGL/GL3.h>
+#endif
 #include <GLFW/glfw3.h>
+#include <iostream>
 
 int main()
 {
@@ -14,6 +19,14 @@ int main()
   if (!glfwInit()) {
     return -1;
   }
+
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+#ifdef __APPLE__
+  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
+#endif
 
   window = glfwCreateWindow(1280, 720, "BossEyebrow", NULL, NULL);
   if (!window) {
@@ -28,10 +41,16 @@ int main()
 	glfwSetCursorPosCallback(window, boss::input::MousePosInput::invoke);
 	glfwSetMouseButtonCallback(window, boss::input::MouseButtonInput::invoke);
 
+#ifndef __APPLE__
   if (glewInit() != GLEW_OK) {
     glfwTerminate();
     return -3;
   }
+#endif
+
+  std::cout << "Vendor: " << glGetString(GL_VENDOR) << std::endl;
+  std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
+  std::cout << "Supported OpenGL version: " << glGetString(GL_VERSION) << std::endl;
 
   // TESTING
   boss::network::NetworkManager netManager;

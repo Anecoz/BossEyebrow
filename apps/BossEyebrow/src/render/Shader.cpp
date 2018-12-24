@@ -1,6 +1,11 @@
 #include "Shader.h"
 #include "ShaderUtils.h"
 
+#ifndef __APPLE__
+#include <GL/glew.h>
+#else
+#include <OpenGL/GL3.h>
+#endif
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>

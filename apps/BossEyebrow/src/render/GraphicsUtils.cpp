@@ -1,5 +1,4 @@
 #include "GraphicsUtils.h"
-
 #include "lodepng.h"
 
 #include <vector>
