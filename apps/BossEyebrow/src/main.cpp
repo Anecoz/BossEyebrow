@@ -47,9 +47,11 @@ int main()
   std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
   std::cout << "Supported OpenGL version: " << glGetString(GL_VERSION) << std::endl;
 
+  const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
   // TESTING
   boss::network::NetworkManager netManager;
-  boss::render::Camera testCamera;
+  boss::render::Camera testCamera(mode->width, mode->height);
   boss::cards::RoomCard testCard;
 
   glDisable(GL_CULL_FACE);

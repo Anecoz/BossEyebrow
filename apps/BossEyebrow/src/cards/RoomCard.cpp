@@ -10,12 +10,14 @@ namespace cards {
 RoomCard::RoomCard()
   : _damage(0)
   , _destroyable(false)
-  , _position({50.0, 50.0, 0.0})
-  , _vao(boss::render::GraphicsUtils::createCardMesh(10.0f, 10.0f, 1.0f))
+  , _position({500.0, 500.0, 0.0})
+  , _vao(nullptr)
   , _texture(boss::render::GraphicsUtils::loadPNGToTexture("apps/BossEyebrow/resources/cards/room/bullet_builder.png"))
   , _shader("apps/BossEyebrow/src/render/shaders/card.vert",
             "apps/BossEyebrow/src/render/shaders/card.frag")
-{}
+{
+  _vao = boss::render::GraphicsUtils::createCardMesh(_texture->getWidth(), _texture->getHeight(), 1.0f);
+}
 
 RoomCard::~RoomCard()
 {}

@@ -5,8 +5,8 @@
 namespace boss {
 namespace render {
 
-Camera::Camera() 
-  : _projection(glm::ortho(0.0, 100.0, 0.0, 100.0, -1.0, 100.0))
+Camera::Camera(unsigned screenWidth, unsigned screenHeight) 
+  : _projection(glm::ortho(0.0, static_cast<double>(screenWidth), 0.0, static_cast<double>(screenHeight), -1.0, 100.0))
 {}
 
 }
