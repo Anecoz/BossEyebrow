@@ -18,12 +18,16 @@ int main()
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 #ifdef __APPLE__
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
 #endif
 
-  window = glfwCreateWindow(1280, 720, "BossEyebrow", NULL, NULL);
+  unsigned windowWidth = 1280;
+  unsigned windowHeight = 720;
+
+  window = glfwCreateWindow(windowWidth, windowHeight, "BossEyebrow", NULL, NULL);
   if (!window) {
     glfwTerminate();
     return -2;
@@ -47,18 +51,17 @@ int main()
   std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
   std::cout << "Supported OpenGL version: " << glGetString(GL_VERSION) << std::endl;
 
-  const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-
   // TESTING
   boss::network::NetworkManager netManager;
-  boss::render::Camera testCamera(mode->width, mode->height);
+  boss::render::Camera testCamera(windowWidth, windowHeight);
   boss::cards::RoomCard testCard;
 
   glDisable(GL_CULL_FACE);
-  glDisable(GL_DEPTH_TEST);
+  glEnable(GL_DEPTH_TEST);
   glClearColor(0.2, 0.5, 0.0, 1.0);
   while (!glfwWindowShouldClose(window)) {
-    glClear(GL_COLOR_BUFFER_BIT);
+    testCard.update(0.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     testCard.render(testCamera);
 

@@ -8,7 +8,7 @@ namespace render {
 class Camera
 {
 public:
-  Camera(unsigned screenWidth, unsigned screenHeight);
+  Camera(unsigned windowWidth, unsigned windowHeight);
   ~Camera() = default;
 
 const glm::mat4& projection() const { return _projection; }

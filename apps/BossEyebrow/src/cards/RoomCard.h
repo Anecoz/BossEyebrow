@@ -31,7 +31,10 @@ public:
   unsigned damage() { return _damage; }
   bool destroyable() { return _destroyable; }
 
+  void update(double delta);
   void render(const boss::render::Camera& camera);
+
+  void setHighlight(bool highlight) { _highlighted = highlight; }
 
   //virtual void onHeroEnter(const Hero& hero) {}
   //virtual void onHeroDeath(const Hero& hero) {}
@@ -42,12 +45,14 @@ protected:
   unsigned _damage; // needs to be modifiable by effects
   std::unordered_map<TreasureType, unsigned> _treasureValues;
   bool _destroyable;
+  bool _highlighted;
 
   glm::vec3 _position;
 
   std::unique_ptr<boss::render::VertexArrayObject> _vao;
   std::unique_ptr<boss::render::Texture> _texture;
   boss::render::Shader _shader;
+  boss::render::Shader _highlightShader;
 
   // What properties can a room card have? 
   // - on build

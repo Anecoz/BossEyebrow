@@ -23,6 +23,7 @@ std::unique_ptr<Texture> GraphicsUtils::loadPNGToTexture(const std::string& file
 
 std::unique_ptr<VertexArrayObject> GraphicsUtils::createCardMesh(float width, float height, float layer)
 {
+	std::cout << "width: " << width << ", height: " << height << std::endl;
 	VertVec verts = {
 		{-width/2.0, height/2.0, layer},
 		{-width/2.0, -height/2.0, layer},
